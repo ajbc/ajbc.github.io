@@ -1,0 +1,13 @@
+Sear Mrs. Chaney,
+
+upon preparing a talk about generalized language design, I came across your pages about the Software Development Process. I am looking for an UML model for this activity, i.e. recursive application of UML to the actors involved in the SDP.
+
+Did you think about that or do you have a reference for such a model?
+
+Best Regards
+
+
+<name removed>
+------------------------------------
+<university info removed>
+------------------------------------
