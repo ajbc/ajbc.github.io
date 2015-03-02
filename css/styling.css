@@ -12,7 +12,7 @@ summary, time, mark, audio, video {
   margin: 0;
   outline: 0;
   padding: 0;
-  vertical-align: baseline; 
+  vertical-align: baseline;
   }
 
 article, aside, details, figcaption, figure,
@@ -118,12 +118,12 @@ p {
   line-height: 1.5em; }
 .title {
   font-size: 28px;
-  line-height: 1.5em; 
+  line-height: 1.5em;
   font-weight: bold; }
 
 .download {
   font-size: 24px;
-  line-height: 1.5em; 
+  line-height: 1.5em;
   font-weight: bold;
   text-align: center;
   font-family: "Source Sans Pro", sans-serif;
@@ -350,7 +350,7 @@ input {
 /************ Layout *************/
 #bump {
   height: auto;
-  margin: 0 auto-320px; 
+  margin: 0 auto-320px;
   /*margin-bottom: 120px;*/}
 
 .wrap {
@@ -386,7 +386,7 @@ header.site-header {
   /*border-bottom: 2px solid rgba(168, 168, 168, 0.7);*/
   position: relative;
   width: 100%;
-  z-index: 5000; 
+  z-index: 5000;
   /*background: #eaeaea;*/
   }
   header.site-header .wrap {
@@ -921,7 +921,7 @@ p.cv_details {
 }
 
 #icontable table {
-    border-collapse:separate; 
+    border-collapse:separate;
     border-spacing: 0px 100px;
     margin-top: -100px;
 }
@@ -939,12 +939,13 @@ table.tighttable {
 
 table.iconLinks {
     margin-top: -20px;
-    border-collapse:separate; 
+    border-collapse:separate;
     border-spacing: 20px 20px;
 }
 
 .iconLinks img {
-    height: 32px;
+    max-height: 32px;
+    max-width: 32px;
 }
 
 .iconLinks p {
