@@ -919,6 +919,7 @@ p.resource_header {
 p.resource_entry {
     font-size: 14pt;
     font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
     margin: 0px;
     margin-bottom: 3px;
     margin-top: 25px;
