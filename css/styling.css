@@ -910,6 +910,25 @@ p.cv_details {
     margin-bottom: 10px;
 }
 
+p.resource_header {
+  font-size: 28px;
+  line-height: 1.5em;
+  font-weight: bold;
+  margin-bottom: -5px;
+}
+p.resource_entry {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0px;
+    margin-bottom: 3px;
+    margin-top: 25px;
+}
+p.resource_details {
+    font-size:11pt;
+    line-height: 1.5em;
+    font-family: "Source Sans Pro", sans-serif;
+    margin-bottom: 10px;
+}
+
 #icontable p {
 }
 
