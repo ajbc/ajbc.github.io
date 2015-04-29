@@ -893,10 +893,10 @@ p.publication {
 }
 
 p.cv_header {
-  font-size: 28px;
-  line-height: 1.5em;
-  font-weight: bold;
-  margin-bottom: -5px;
+    font-size: 28px;
+    line-height: 1.5em;
+    font-weight: bold;
+    margin-bottom: -5px;
 }
 p.cv_entry {
     margin: 0px;
@@ -911,12 +911,13 @@ p.cv_details {
 }
 
 p.resource_header {
-  font-size: 28px;
-  line-height: 1.5em;
-  font-weight: bold;
-  margin-bottom: -5px;
+    font-size: 28px;
+    line-height: 1.5em;
+    font-weight: bold;
+    margin-bottom: -5px;
 }
 p.resource_entry {
+    font-size: 14pt;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0px;
     margin-bottom: 3px;
