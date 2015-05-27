@@ -1,0 +1,184 @@
+<!-- design borrowed from https://jaan.io/ -->
+<html class=" js rgba hsla textshadow opacity svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+<title>Allison J.B. Chaney</title>
+<meta name="description" content="I am a computer science PhD student in machine learning.">
+<meta name="keywords" content="Allison Chaney, Allison J.B. Chaney, ajbc, allison, Allison Barlow, computer science, cs, princeton, swarthmore, PhD, graduate school, recommendation, recommendation systems, visualization, stochastic variationla inference, machine learning, human-centered applications, scalable models, ml">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Allison J.B. Chaney">
+<meta property="og:description" content="I am a computer science PhD student in machine learning.">
+<meta property="og:site_name" content="Allison J.B. Chaney">
+<meta property="og:image" content="http://ajbc.io/img/nighthawk.ico.png">
+
+
+<!-- fonts -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600' rel='stylesheet' type='text/css'>
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="../../../../css/styling.css">
+<!--<link rel="stylesheet" href="http://ajbc.io/css/styling.css">-->
+<link rel="stylesheet" href="http://ajbc.io/css/lightbox.css"/>
+
+
+<!-- for fancy image stuff -->
+<script src="../../../../js/jquery-1.11.0.min.js"></script>
+<script src="../../../../js/lightbox.min.js"></script>
+<!--<script src="http://ajbc.io/js/jquery-1.11.0.min.js"></script>
+<script src="http://ajbc.io/js/lightbox.min.js"></script>-->
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://ajbc.io/img/nighthawk.ico.png">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://ajbc.io/img/nighthawk.icon.png">
+
+
+<div id="bump">
+
+    <header class="site-header darken">
+      <div class="wrap">
+        <hgroup>
+          <h1><a href="http://ajbc.io"><span class="dark">A</span>llison&nbsp;<span class="dark">J</span>une&nbsp;<span class="dark">B</span>arlow&nbsp;<span class="dark">C</span>haney</a></h1>
+        </hgroup>
+        <nav role="navigation">
+          <ul>
+                <li><a href="http://ajbc.io/about/">About</a></li>
+
+                <li><a href="http://ajbc.io/cv/">CV</a></li>
+
+                <li><a href="http://ajbc.io/projects/">Projects</a></li>
+
+                <li><a href="http://ajbc.io/contact/">Contact</a></li>
+
+
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <div id="bump2">
+        <section class="article archive">
+          <article class="archive-wrap" id="icontable">
+          <p class="publication"><a href="../">Back to all events</a></p>
+          <p class="intro">The Fall of Saigon
+          </p>
+          <p>Saigon, the capital of South Vietnam, was captured on April 30, 1975, ending the Vietnam War.</p>
+          <p class="publication"><a href="http://en.wikipedia.org/wiki/Fall_of_Saigon">Wikipedia article</a></p>
+
+          <br />
+          <hr />
+          <br />
+          <p>We first consider the occurrences of the word "Saigon" as both
+             raw counts (left) and percentages (right).  We present overall term
+             count (top) and the count of documents containing the term (bottom).  The distributions we see establish that there is some signal for this event in the data.</p>
+          <a href="fig/Saigon_term_count.svg" data-lightbox="set1">
+            <img src="fig/Saigon_term_count.svg" class="thumbnail"/>
+          </a>
+          <a href="fig/Saigon_term_prop.svg" data-lightbox="set1">
+            <img src="fig/Saigon_term_prop.svg" class="thumbnail"/>
+          </a>
+          <a href="fig/Saigon_doc_count.svg" data-lightbox="set1">
+            <img src="fig/Saigon_doc_count.svg" class="thumbnail"/>
+          </a>
+          <a href="fig/Saigon_doc_prop.svg" data-lightbox="set1">
+            <img src="fig/Saigon_doc_prop.svg" class="thumbnail"/>
+          </a>
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <hr />
+          <br />
+          <p>Next, we consider the entities sending and receiving cables, reporting entities as a percentage of all messages sent.
+          We compare the span of time surrounding the event against spans of equal length immediately before and after the event; we also compare to the average of the whole corpus, including the event itself.
+             </p>
+             <p>
+             First, we examine top entities in the subset of documents containing the word "Saigon".
+             </p>
+          <a href="fig/Saigon_entities_culled.svg" data-lightbox="set2">
+            <img src="fig/Saigon_entities_culled.svg" class="thumbnail_wide"/>
+          </a>
+          <br />
+          <br />
+             <p>
+             Second, we examine top entities in whole corpus during the event.
+             </p>
+          <a href="fig/Saigon_entities.svg" data-lightbox="set2">
+            <img src="fig/Saigon_entities.svg" class="thumbnail_wide"/>
+          </a>
+          <br />
+          <br />
+             <p>
+             Finally, we use the top entities in the subset of documents containing the word "Saigon" and examine their behavior on all messages--not just the subset of documents containing the word of interest.
+             </p>
+          <a href="fig/Saigon_entities_culled_in_all.svg" data-lightbox="set2">
+            <img src="fig/Saigon_entities_culled_in_all.svg" class="thumbnail_wide"/>
+          </a>
+
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <hr />
+          <br />
+          <p>Now we consider how LDA topics relate to the event.  We fit LDA
+          with K=100 and K=500.  We weigh all documents equally, regardless of length.
+             </p>
+             <p>
+             First, we examine top topics in the subset of documents containing the word "Saigon" for K=100.
+             </p>
+          <a href="fig/Saigon_topics_k100_culled.svg" data-lightbox="set3">
+            <img src="fig/Saigon_topics_k100_culled.svg" class="thumbnail_wide"/>
+          </a>
+          <br />
+          <br />
+
+             <p>
+             Similarly, we examine top topics in the subset of documents containing the word "Saigon" for K=500.
+             </p>
+          <a href="fig/Saigon_topics_k500_culled.svg" data-lightbox="set3">
+            <img src="fig/Saigon_topics_k500_culled.svg" class="thumbnail_wide"/>
+          </a>
+          <br />
+          <br />
+
+
+             <p>
+             To get a broader picture, we examine top topics in all documents for K=100.
+             </p>
+          <a href="fig/Saigon_topics_k100.svg" data-lightbox="set3">
+            <img src="fig/Saigon_topics_k100.svg" class="thumbnail_wide"/>
+          </a>
+          <br />
+          <br />
+
+
+             <p>
+             Similarly, we examine top topics in all documents for K=500.
+             </p>
+          <a href="fig/Saigon_topics_k500.svg" data-lightbox="set3">
+            <img src="fig/Saigon_topics_k500.svg" class="thumbnail_wide"/>
+          </a>
+          <br />
+          <br />
+
+
+          </article>
+        </section>
+    </div>
+
+
+</body></html>
