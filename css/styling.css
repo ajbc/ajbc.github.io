@@ -130,6 +130,15 @@ p {
   margin-top: -30px;
   }
 
+.download_small {
+  font-size: 18px;
+  line-height: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-top: -30px;
+  }
+
 #nighthawk {
   display: block;
   margin-left: auto;
@@ -988,4 +997,10 @@ table.iconLinks {
 
 .iconLinks td {
     vertical-align: middle;
+}
+
+.bullet {
+  color: #cacaca;
+  padding-left: 10px;
+  padding-right: 10px;
 }
