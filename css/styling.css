@@ -1004,3 +1004,50 @@ table.iconLinks {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+
+h2 {
+    font-size: 24pt;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+h3 {
+    font-size: 19pt;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: 0px;
+    color: #888;
+    padding-bottom: 5px;
+}
+table.objectives {
+    width: 100%;
+    vertical-align: bottom;
+    border-spacing: 0px;
+}
+table.objectives td {
+    padding: 0px;
+    margin: 0px;
+}
+p.objective {
+    font-size: 14pt;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: 0px;
+}
+p.key_result {
+    font-size:11pt;
+    line-height: 1.5em;
+    font-family: "Source Sans Pro", sans-serif;
+    margin-bottom: 10px;
+}
+table.filetable {
+    margin:auto;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+table.filetable p {
+    margin: auto;
+    text-align: center;
+}
