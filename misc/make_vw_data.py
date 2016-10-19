@@ -1,3 +1,4 @@
+ids = ''
 fout = open("data.tsv", 'w+')
 line_id = 0
 for line in open("data_inclmissing.tsv"):
