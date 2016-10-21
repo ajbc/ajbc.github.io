@@ -10,8 +10,8 @@ for line in open("train_outcomes.csv"):
     tok = line.strip().split(',')
     idx = int(tok[0].strip("\""))
     outcomes[idx] = (float(tok[1]), float(tok[2]), float(tok[3]), \
-        1 if int(tok[4]) == 1 else -1, \
-        1 if int(tok[5]) == 1 else -1)
+        1 if int(tok[4]) == 1 else 0, \
+        1 if int(tok[5]) == 1 else 0)
 
 
 print "setting up vw files"
@@ -27,6 +27,7 @@ fout2_evic = open("vw_evicted_test.dat", 'w+')
 fout2_colp = open("vw_collegeplans_test.dat", 'w+')
 def write_out(idx, features):
     f = "|MetricFeatures%s" % features[0]
+    #f = "|m%s" % features[0]
     if len(features) > 1:
         for i in range(1,len(features)):
             f += ' ' + features[i]
@@ -73,7 +74,8 @@ for line in open("data_inclmissing.tsv"):
             val = float(t)
             cur_str[0] += ' ' + ids[idx].strip("\"") + ":" + t
         except:
-            if tok[2] != '':
+            if t != '':
+                t = t.replace(':', ' ')
                 cur_str.append('|%s %s' % (ids[idx].strip("\""), t))
 
     write_out(id, cur_str)
