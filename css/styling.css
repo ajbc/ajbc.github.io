@@ -968,6 +968,22 @@ p.resource_details {
     margin-top: -100px;
 }
 
+#icontable_tight p {
+}
+
+#icontable_tight p.intro {
+  font-weight: bold; }
+
+#icontable_tight td {
+    vertical-align: top;
+}
+
+#icontable_tight table {
+    border-collapse:separate;
+    border-spacing: 0px 0px;
+    margin-top: 0px;
+}
+
 table.tighttable {
     margin: auto;
 }
