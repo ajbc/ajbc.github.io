@@ -1067,3 +1067,6 @@ table.filetable p {
     margin: auto;
     text-align: center;
 }
+span.mono {
+    font-family: 'PT Mono', monospace;
+}
