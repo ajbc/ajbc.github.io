@@ -1069,4 +1069,5 @@ table.filetable p {
 }
 span.mono {
     font-family: 'PT Mono', monospace;
+    font-size: 15px;
 }
