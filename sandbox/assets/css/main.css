@@ -182,7 +182,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #3d4449;
-		font-family: "Source Sans Pro", serif;
+		font-family: "Libre Baskerville", serif;
 		font-weight: 700;
 		line-height: 1.5;
 		margin: 0 0 1em 0;
@@ -2040,6 +2040,25 @@ input, select, textarea {
 		}
 
 		.icon > .label {
+			display: none;
+		}
+
+	.ai {
+		text-decoration: none;
+		border-bottom: none;
+		position: relative;
+	}
+
+		.ai:before {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			font-family: Academicons;
+			font-style: normal;
+			font-weight: normal;
+			text-transform: none !important;
+		}
+
+		.ai > .label {
 			display: none;
 		}
 
