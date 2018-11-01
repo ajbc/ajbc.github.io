@@ -3465,6 +3465,7 @@ input, select, textarea {
 				#header .logo {
 					font-size: 1.25em;
 					margin: 0;
+					padding-top: 2em;
 				}
 
 				#header .icons {
