@@ -225,6 +225,16 @@ input, select, textarea {
 		font-size: 0.7em;
 	}
 
+	.statement {
+		font-weight: 700;
+		color: #156946;
+		margin: 0 0 2em 0;
+	}
+
+	.statement p {
+		margin: 0 0 0.5em 0;
+	}
+
 	@media screen and (max-width: 1680px) {
 
 		h1 {
@@ -2632,6 +2642,128 @@ input, select, textarea {
 			border-top: 0;
 			margin-top: 0;
 			padding-top: 0;
+		}
+
+/* Projects */
+
+	.projects {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin: 0 0 2em -3em;
+		width: calc(100% + 3em);
+	}
+
+		.projects .projicon {
+			border-radius: 0.375em;
+			border: 0;
+			display: inline-block;
+			position: relative;
+	    	height: 100%;
+			vertical-align: top;
+		}
+
+		.projects .projicon img {
+			float: left;
+	    	max-height: 200px;
+	    	margin-right: 50px;
+	    	max-width: 200px;
+		}
+
+		.projects article {
+			-moz-align-items: center;
+			-webkit-align-items: center;
+			-ms-align-items: center;
+			align-items: center;
+			display: -moz-flex;
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: flex;
+			margin: 0 0 3em 3em;
+			position: relative;
+			width: calc(50% - 3em);
+		}
+
+			.projects article:nth-child(2n - 1) {
+				margin-right: 1.5em;
+			}
+
+			.projects article:nth-child(2n) {
+				margin-left: 1.5em;
+			}
+
+			.projects article:nth-last-child(1), .projects article:nth-last-child(2) {
+				margin-bottom: 0;
+			}
+
+			.projects article .content {
+				-moz-flex-grow: 1;
+				-webkit-flex-grow: 1;
+				-ms-flex-grow: 1;
+				flex-grow: 1;
+				-moz-flex-shrink: 1;
+				-webkit-flex-shrink: 1;
+				-ms-flex-shrink: 1;
+				flex-shrink: 1;
+				width: 100%;
+			}
+
+				.projects article .content > :last-child {
+					margin-bottom: 0;
+				}
+
+		@media screen and (max-width: 1480px) {
+
+			.projects {
+				margin: 0 0 2em 0;
+				width: 100%;
+			}
+
+				.projects article {
+					margin: 0 0 3em 0;
+					width: 100%;
+				}
+
+					.projects article:nth-child(2n - 1) {
+						margin-right: 0;
+					}
+
+					.projects article:nth-child(2n) {
+						margin-left: 0;
+					}
+
+					.projects article:nth-last-child(1), .projects article:nth-last-child(2) {
+						margin-bottom: 3em;
+					}
+
+					.projects article:last-child {
+						margin-bottom: 0;
+					}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			.projects article {
+				-moz-flex-direction: column;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-moz-align-items: -moz-flex-start;
+				-webkit-align-items: -webkit-flex-start;
+				-ms-align-items: -ms-flex-start;
+				align-items: flex-start;
+			}
+
+			.projects .projicon img {
+		    	margin-bottom: 30px;
+			}
+
 		}
 
 /* Features */

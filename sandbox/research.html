@@ -44,20 +44,82 @@
 										<h1>research</h1>
 									</header>
 
-									<p><span class="image right"><img src="images/pic01.jpg" alt="" /></span>In July 2019, I will start as an Assistant Professor of Marketing in the <a href="https://www.fuqua.duke.edu/">Fuqua School of Business</a> at <a href="https://www.duke.edu/">Duke University</a>.  My <a href="research.html">research</a> is at the intersection of machine learning and marketing, focusing on developing scalable and interpretable machine learning methods and understanding the impacts of these methods on individuals and society.</p>
+									<span class="statement"><p>My primary research interests are to</p>
+										<ul>
+											<li>develop and use statistical machine learning methods to identify influences on consumer behavior,</li>
+											<li>understand the impact of deployed machine learning algorithms in real-world markets, and</li>
+											<li>leverage these and other insights to improve the machine learning methods used in industry to increase companies' objectives, individual well-being, and societal welfare.</li>
+										</ul>
+									</span>
 
-									<p>I received my Ph.D. in Computer Science at Princeton University, under the advisement of <a href="http://www.cs.columbia.edu/~blei/">David Blei</a>. When he moved to Columbia University mid-way through my graduate program, I became a visiting student there.  After graduating, I worked as a postdoctoral researcher with <a href="https://www.cs.princeton.edu/~bee/">Barbara Engelhardt</a> and <a href="https://scholar.princeton.edu/bstewart/home">Brandon Stewart</a>, also at Princeton.  I hold a B.A. in Computer Science and a B.S. in Engineering from Swarthmore College.  I have worked for <a href="https://www.pixar.com/">Pixar Animation Studios</a> and the <a href="http://yorba.org/">Yorba Foundation</a> for open-source software; I have also completed research internships with <a href="https://www.ebay.com/">eBay</a>/<a href="https://en.wikipedia.org/wiki/Hunch_(website)">Hunch</a> and <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-new-york/">Microsoft Research</a>.</p>
+									<p>My main application area of interest is personalized recommendation systems for online platforms.  More broadly, I specialize in discrete data; I have worked extensively with unstructured text and logged user actions.</p>
 
-									<hr class="major" />
-									<header class="main">
-										<p>Personal</p>
+									<p>In these applications, it's especially important for models to be interpretable and inference algorithms to be scalable.  To these ends, I focus on Bayesian latent variable models, which are well-suited to exploratory data analysis because variables can map to intuitive concepts such as the "topic" of a document or the "influence" of one person on another.  These variables can be learned with variational inference techniques, which scale well to large numbers of observations.</p>
+
+									<p>If you are interested in learning more about any of these subjects, please see my <a href="resources/reading.html">recommended readings</a> for a list of resources.</p>
+								</section>
+
+									
+								<section>
+									<header class="major">
+										<h2>Projects</h2>
 									</header>
-									<p><span class="image right"><img src="images/locations.png" alt="" /></span>I was born and raised in southern California and then proceeded to hop between coasts for the next decade: I attended college in eastern Pennsylvania, worked in the Bay Area for a few years, and returned east to New Jersey for graduate school.  I was excited to find a permanent home in North Carolina.</p>
+									<div class="projects" id="projects">
+										<article>
+											<a href="projects/recsys-feedback-loops.html" class="projicon"><img src="img/recloops.png" alt="" /></a>
+											<div class="content">
+												<h3>Algorithmic Confounding in Recommendation Systems</h3>
+												<p>Recommendation systems occupy an expanding role in everyday decision making, from choice of movies and household goods to consequential medical and legal decisions. The data used to train and test these systems is algorithmically confounded in that it is the result of a feedback loop between human choices and an existing algorithmic recommendation system. This active project involves exploring the impact of algorithmic confounding in this context.</p>
+												<ul class="actions">
+												<li><a href="projects/recsys-feedback-loops.html" class="button">More</a></li>
+												</ul>
+											</div>
+										</article>
 
-									<p>I married my husband <a href="http://www.nathanielchaney.com/">Nathaniel Chaney</a> in 2010 and we backpacked the John Muir Trail (over 200 miles) for part of our honeymoon.  We have one child (born 2017) and are expecting a second in early March 2019.  All of us love spending as much time outdoors as we can.</p>
+										<article>
+											<a href="projects/ndm.html" class="projicon"><img src="img/ndm.png" alt="" /></a>
+											<div class="content">
+												<h3>Nonparametric Deconvolution Models</h3>
+												<p>Decomposition models decompose observations into constituent parts by representing observations as a product between group representations and factor features. With others, I am working on <emph>deconvolution models</emph>, which similarly decompose, or deconvolve, observations into constituent parts, but also capture group-specific (or local) fluctuations in factor features.</p>
+												<ul class="actions">
+												<li><a href="projects/ndm.html" class="button">More</a></li>
+												</ul>
+											</div>
+										</article>
 
-									<p>In terms of hobbies (for which I have less time than I'd like), I love gardening, cooking and baking, writing letters by hand, painting and drawing, textile crafts (primarily crochet and sewing), and leisure reading.  I am an active member of the Church of Jesus Christ of Latter-day Saints and enjoy reading and practicing Stoic philosophy.</p>
+										<article>
+											<a href="projects/spf.html" class="projicon"><img src="img/spf.png" alt="" /></a>
+											<div class="content">
+												<h3>Social Poisson Factorization</h3>
+												<p>The downside to most algorithmic recommendations is that, for some people, part of the appeal of reading, watching, or consuming other media is in creating shared experiences with friends. This work incorporates the ratings of friends (and not just friends' general preferences) in providing personalized recommendations.</p>
+												<ul class="actions">
+												<li><a href="projects/spf.html" class="button">More</a></li>
+												</ul>
+											</div>
+										</article>
 
+										<article>
+											<a href="projects/group-rec.html" class="projicon"><img src="img/grouprec.png" alt="" /></a>
+											<div class="content">
+												<h3>Recommending Television for Groups</h3>
+												<p>With collaborators, I performed a large-scale study of television viewing habits, focusing on how individuals adapt their preferences when consuming content with others. We constructed a simple model for estimating how individual preferences are combined in group settings.</p>
+												<ul class="actions">
+												<li><a href="projects/group-rec.html" class="button">More</a></li>
+												</ul>
+											</div>
+										</article>
+
+										<article>
+											<a href="projects/text.html" class="projicon"><img src="img/tmv.png" alt="" /></a>
+											<div class="content">
+												<h3>Exploring Text Data</h3>
+												<p>Topic modeling is a machine learning method that learns underlying themes in a collection of documents, which can be used to summarize and organize the documents.  I have worked on several projects to allow domain experts to explore their corpora through the lens of topic modeling.</p>
+												<ul class="actions">
+												<li><a href="projects/text.html" class="button">More</a></li>
+												</ul>
+											</div>
+										</article>
+									</div>
 								</section>
 
 						</div>
