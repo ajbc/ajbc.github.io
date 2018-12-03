@@ -2111,6 +2111,21 @@ input, select, textarea {
 			top: 0.25em;
 		}
 
+        .image.center {
+			width: 100%;
+            display: block;
+			top: 0.25em;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .image.center img {
+            display: inline-block;
+            padding: 0 1.5em;
+            width: 40%;
+        }
+
 		.image.fit {
 			display: block;
 			margin: 0 0 2em 0;
@@ -2148,6 +2163,7 @@ input, select, textarea {
 			-ms-transform: scale(1.075);
 			transform: scale(1.075);
 		}
+
 
 /* List */
 

@@ -41,22 +41,13 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>research</h1>
+										<h2>nonparametric deconvolution models</h2>
 									</header>
+									
+                                    <p>Nonparametric deconvolution models (NDMs) are a family of Bayesian nonparametric models for collections of data in which each observation is the summation over the features from heterogeneous particles.  For example, this type of data is found in elections, where we observe district-level vote tallies (observations) of individual citizens’ votes (particles) across each of the candidates or ballot measures (features), where each citizen is from a specific voter cohort (factor). Like the hierarchical Dirichlet process, NDMs rely on two tiers of Dirichlet processes to explain the data with an unknown number of latent factors; each observation is modeled as a weighted average of these latent factors. Unlike existing models, however, NDMs recover how factors vary locally for each observation. This allows us to deconvolve each observation into its constituent factors and describe how these local, observation-specific factors deviate from their corresponding global factors.</p>
 
-									<p><span class="image right"><img src="images/pic01.jpg" alt="" /></span>In July 2019, I will start as an Assistant Professor of Marketing in the <a href="https://www.fuqua.duke.edu/">Fuqua School of Business</a> at <a href="https://www.duke.edu/">Duke University</a>.  My <a href="research.html">research</a> is at the intersection of machine learning and marketing, focusing on developing scalable and interpretable machine learning methods and understanding the impacts of these methods on individuals and society.</p>
-
-									<p>I received my Ph.D. in Computer Science at Princeton University, under the advisement of <a href="http://www.cs.columbia.edu/~blei/">David Blei</a>. When he moved to Columbia University mid-way through my graduate program, I became a visiting student there.  After graduating, I worked as a postdoctoral researcher with <a href="https://www.cs.princeton.edu/~bee/">Barbara Engelhardt</a> and <a href="https://scholar.princeton.edu/bstewart/home">Brandon Stewart</a>, also at Princeton.  I hold a B.A. in Computer Science and a B.S. in Engineering from Swarthmore College.  I have worked for <a href="https://www.pixar.com/">Pixar Animation Studios</a> and the <a href="http://yorba.org/">Yorba Foundation</a> for open-source software; I have also completed research internships with <a href="https://www.ebay.com/">eBay</a>/<a href="https://en.wikipedia.org/wiki/Hunch_(website)">Hunch</a> and <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-new-york/">Microsoft Research</a>.</p>
-
-									<hr class="major" />
-									<header class="main">
-										<p>Personal</p>
-									</header>
-									<p><span class="image right"><img src="images/locations.png" alt="" /></span>I was born and raised in southern California and then proceeded to hop between coasts for the next decade: I attended college in eastern Pennsylvania, worked in the Bay Area for a few years, and returned east to New Jersey for graduate school.  I was excited to find a permanent home in North Carolina.</p>
-
-									<p>I married my husband <a href="http://www.nathanielchaney.com/">Nathaniel Chaney</a> in 2010 and we backpacked the John Muir Trail (over 200 miles) for part of our honeymoon.  We have one child (born 2017) and are expecting a second in early March 2019.  All of us love spending as much time outdoors as we can.</p>
-
-									<p>In terms of hobbies (for which I have less time than I'd like), I love gardening, cooking and baking, writing letters by hand, painting and drawing, textile crafts (primarily crochet and sewing), and leisure reading.  I am an active member of the Church of Jesus Christ of Latter-day Saints and enjoy reading and practicing Stoic philosophy.</p>
+                                    <img src="../images/pic01.jpg" alt="" />
+                                    <p>Illustrations of multiple latent variable models.  <em>Mixture models assign</em> each observation to one of <em>K</em> clusters, or factors.  <em>Admixture models</em> represent groups of observations, each with its own mixture of <em>K</em> shared factors. <em>Decomposition models</em> decompose observations into constituent parts by representing observations as a product between group representations and factor features.  <em>Deconvolution models</em> (this work) similarly decompose, or deconvolve,observations into constituent parts, but also capture group-specific (or local) fluctuations in factor features.</p>
 
 								</section>
 
