@@ -44,26 +44,36 @@
 										<h2>social poisson factorization</h2>
 									</header>
 									
-                                    <p><span class="image right"><img src="img/recsysloops.png" alt="" /></span>The downside to most algorithmic recommendations is that, for some people, part of the appeal of reading, watching, or consuming other media is in creating shared experiences with friends. We incorporate the ratings of friends (and not just friends' general preferences) in providing personalized recommendations.</p>
+                                    <p><span class="image right"><img src="img/spf-cartoon.png" alt="" /></span>
+                                    Web users consume media; we choose which books to download, which news articles to read, and which movies to watch. In the past, we often found media by asking trusted friends for recommendations. In the modern web, however, we rely more on algorithmic preference-based recommendation models to find media we are likely to enjoy. Preference-based recommendation systems have transformed how we consume media; these methods uncover our latent preferences from usage data and form recommendations based on the behavior of others with similar tastes.</p>
 
-                                    <p>We provide</p>
+									<p>But preference-based recommendations focuses us and reinforces our preferences, losing the social aspect of consumption where a trusted friend might point us to an interesting item that does not match our typical preferences. In this work, we aim to bridge the gap between preference- and social-based recommendations. We exploit that our social structure—that is, the friends and colleagues from whom we might enjoy recommendations—is often encoded on the same platform as the one which we use to find media. This opens the door to using the preferences and histories of users we know to inform algorithmic recommendations.</p>
 
+									<p>Specifically, we have developed a probabilistic model that incorporates social network information into traditional recommendation models, reintroducing the social aspect to recommendation and improving recommendations.</p>
+
+									<hr class="major">
 									<h3>citation</h3>
-<pre><code>@inproceedings{Chaney:2018,
-	author = {Chaney, Allison J. B. and Stewart, Brandon M. and Engelhardt, Barbara E.},
-	title = {How Algorithmic Confounding in Recommendation Systems Increases Homogeneity and Decreases Utility},
-	booktitle = {Proceedings of the 12th ACM Conference on Recommender Systems},
-	series = {RecSys '18},
-	year = {2018},
-	isbn = {978-1-4503-5901-6},
-	pages = {224--232},
-	doi = {10.1145/3240323.3240370}
+<pre><code>@inproceedings{Chaney2015,
+    author = {Chaney, Allison J.B. and Blei, David M. and Eliassi-Rad, Tina},
+    title = {A Probabilistic Model for Using Social Networks in Personalized Item Recommendation},
+    booktitle = {Proceedings of the 12th ACM Conference on Recommender Systems},
+    series = {RecSys '15},
+    year = {2015},
+    isbn = {978-1-4503-3692-5},
+    pages = {43--50},
+    doi = {10.1145/2792838.2800193}
 }</code></pre>
 
+								<hr class="major">
 								<h3>resources</h3>
 								<ul class="alt">
-									<li>How Algorithmic Confounding in Recommendation Systems Increases Homogeneity and Decreases Utility [<a href="https://dl.acm.org/citation.cfm?id=3240370">via ACM Digital Library</a>] [<a href="https://arxiv.org/abs/1710.11214">via arXiv</a>]</li>
-									<li><a href="slides/chaney_recsys2018.pdf">RecSys '18 Talk Slides</a></li>
+									<li>A Probabilistic Model for Using Social Networks in Personalized Item Recommendation [<a href="https://dl.acm.org/citation.cfm?id=2800193">via ACM Digital Library</a>] [<a href="papers/Chaney2015.pdf">PDF</a>]</li>
+									<li>RecSys '15 talk slides [<a href="slides/chaney_recsys2015.pdf">PDF</a>]</li>
+									<li>Source code [<a href="https://github.com/ajbc/spf">via GitHub</a>]</li>
+									<li>Working paper at NIPS 2013 Workshop: What Difference Does Personalization Make? [<a href="papers/ChaneyNIPS2013_workshop.pdf">PDF</a>]</li>
+
+
+									
 								</ul>
 
 								</section>
