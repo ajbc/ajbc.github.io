@@ -46,8 +46,18 @@
 									
                                     <p>Nonparametric deconvolution models (NDMs) are a family of Bayesian nonparametric models for collections of data in which each observation is the summation over the features from heterogeneous particles.  For example, this type of data is found in elections, where we observe district-level vote tallies (observations) of individual citizens’ votes (particles) across each of the candidates or ballot measures (features), where each citizen is from a specific voter cohort (factor). Like the hierarchical Dirichlet process, NDMs rely on two tiers of Dirichlet processes to explain the data with an unknown number of latent factors; each observation is modeled as a weighted average of these latent factors. Unlike existing models, however, NDMs recover how factors vary locally for each observation. This allows us to deconvolve each observation into its constituent factors and describe how these local, observation-specific factors deviate from their corresponding global factors.</p>
 
-                                    <img src="../images/pic01.jpg" alt="" />
-                                    <p>Illustrations of multiple latent variable models.  <em>Mixture models assign</em> each observation to one of <em>K</em> clusters, or factors.  <em>Admixture models</em> represent groups of observations, each with its own mixture of <em>K</em> shared factors. <em>Decomposition models</em> decompose observations into constituent parts by representing observations as a product between group representations and factor features.  <em>Deconvolution models</em> (this work) similarly decompose, or deconvolve,observations into constituent parts, but also capture group-specific (or local) fluctuations in factor features.</p>
+									<span class="image fit"><img src="img/ndm_related_models.png" alt="" /></span>
+                                    <p>Illustrations of multiple latent variable models.  <em>Mixture models</em> (far left) assign each observation to one of <em>K</em> clusters, or factors.  <em>Admixture models</em> (center left) represent groups of observations, each with its own mixture of <em>K</em> shared factors. <em>Decomposition models</em> (center right) decompose observations into constituent parts by representing observations as a product between group representations and factor features.  <em>Deconvolution models</em> (far right, this work) similarly decompose, or deconvolve,observations into constituent parts, but also capture group-specific (or local) fluctuations in factor features.</p>
+
+
+								<hr class="major">
+								<h3>resources</h3>
+								<ul class="alt">
+									<li><a href="https://sites.google.com/view/nipsbnp2018/">BNP@NeurIPS 2018 workshop</a> invited talk [<a href="">PDF of slides</a>]</li>
+
+
+
+								</ul>
 
 								</section>
 
