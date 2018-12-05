@@ -44,33 +44,29 @@
 										<h1>exploring text data</h1>
 									</header>
 
-									<p> general intro</p>
+									<p>Written text is a rich and abundant source of data that tells us about human behavior, relationships, and influences. Probabilistic topic models discover the underlying themes in collection of documents; these themes can be used to summarize, organize, explore, and analyze a given corpus.  Topic models, however, are high-level statistical tools—a user must scrutinize numerical distributions to understand their results.  I have worked to make topic modeling results accessible, as well as to build custom topic models.</p>
 								</section>
 								<section>
 									<h2>Visualizing Topic Models</h2>
 									
-                                    <p><span class="image right"><img src="img/grouprec.png" alt="" /></span>Let’s say you know the movie preferences for two individuals and these two want to watch a movie together.  What do you recommend for them to watch?  Previous work merged individual preferences for group setting with fairly simple preference aggregation functions, and each of these functions encode different value systems.</p>
-
-                                    <p>We found that empirically, social influence has complex effects on the way people express their preferences.  Groups are more complex than the sum of their parts and predicting group preferences requires modeling both groups and individuals well because viewing habits shift substantially between individual and group contexts.</p>
+                                    <p><span class="image right"><img src="img/tmv.png" alt="" /></span>We have created a method for visualizing topic models, allowing users to explore a corpus by navigating between high level topic descriptions and individual documents, hopefully deepening their understanding of the corpus.</p>
 
                                     <hr class="major">
 									<h3>citation</h3>
-<pre><code>@inproceedings{Chaney:2014,
-	author = {Chaney, Allison J.B. and Gartrell, Mike and Hofman, Jake M. and Guiver, John and Koenigstein, Noam and Kohli, Pushmeet and Paquet, Ulrich},
-	title = {A Large-scale Exploration of Group Viewing Patterns},
-	booktitle = {Proceedings of the ACM International Conference on Interactive Experiences for TV and Online Video},
-	series = {TVX '14},
-	year = {2014},
-	isbn = {978-1-4503-2838-8},
-	pages = {31--38},
-	doi = {10.1145/2602299.2602309}
+<pre><code>@inproceedings{Chaney:2012,
+    author = {Chaney, Allison J.B. and Blei, David M.},
+    title = {Visualizing Topic Models},
+    booktitle = {Proceedings of the Sixth International AAAI Conference on Weblogs and Social Media},
+    series = {ICWSM '12},
+    year = {2012}
 }</code></pre>
 
 								<hr class="major">
 								<h3>resources</h3>
 								<ul class="alt">
-									<li>A Large-scale Exploration of Group Viewing Patterns [<a href="https://dl.acm.org/citation.cfm?id=2602309">via ACM Digital Library</a>] [<a href="papers/ChaneyGartrellHofman_TVX2014.pdf">PDF</a>]</li>
-									<li>Mining Large-scale TV Group Viewing Patterns for Group Recommendation [<a href="https://www.microsoft.com/en-us/research/publication/mining-large-scale-tv-group-viewing-patterns-for-group-recommendation/">MSR Tech Report</a>]</li>
+									<li>Visualizing Topic Models [<a href="papers/ChaneyBlei2012.pdf">PDF</a>]</li>
+									<li>Source code [<a href="https://github.com/ajbc/tmve-original/">Original code via GitHub</a>] [<a href="https://github.com/ajbc/tmv">Online (Django) variant via GitHub</a>]</li>
+									<li><a href="http://www.princeton.edu/~achaney/tmve/wiki100k/browse/topic-presence.html">Wikipedia Demo</a></li>
 								</ul>
 
 								</section>
@@ -80,28 +76,27 @@
 								<section>
 									<h2>Historical Event Detection</h2>
 
-									<p><span class="image right"><img src="img/grouprec.png" alt="" /></span>Let’s say you know the movie preferences for two individuals and these two want to watch a movie together.  What do you recommend for them to watch?  Previous work merged individual preferences for group setting with fairly simple preference aggregation functions, and each of these functions encode different value systems.</p>
-
-                                    <p>We found that empirically, social influence has complex effects on the way people express their preferences.  Groups are more complex than the sum of their parts and predicting group preferences requires modeling both groups and individuals well because viewing habits shift substantially between individual and group contexts.</p>
+									<p><span class="image right"><img src="img/events.png" alt="" /></span>Historians and political scientists commonly read large quantities of text to construct an accurate picture of significant events. Our methods help historians identify possible events from the texts of historical communication.</p>
 
                                     <hr class="major">
 									<h3>citation</h3>
-<pre><code>@inproceedings{Chaney:2014,
-	author = {Chaney, Allison J.B. and Gartrell, Mike and Hofman, Jake M. and Guiver, John and Koenigstein, Noam and Kohli, Pushmeet and Paquet, Ulrich},
-	title = {A Large-scale Exploration of Group Viewing Patterns},
-	booktitle = {Proceedings of the ACM International Conference on Interactive Experiences for TV and Online Video},
-	series = {TVX '14},
-	year = {2014},
-	isbn = {978-1-4503-2838-8},
-	pages = {31--38},
-	doi = {10.1145/2602299.2602309}
+<pre><code>@inproceedings{Chaney:2016,
+    title={Detecting and Characterizing Events},
+    author={Chaney, Allison J.B. and Wallach, Hanna and Connelly, Matthew and Blei, David M.},
+    booktitle={Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing},
+    series = {EMNLP '16},
+    pages={1142--1152},
+    year={2016}
 }</code></pre>
 
 								<hr class="major">
 								<h3>resources</h3>
 								<ul class="alt">
-									<li>A Large-scale Exploration of Group Viewing Patterns [<a href="https://dl.acm.org/citation.cfm?id=2602309">via ACM Digital Library</a>] [<a href="papers/ChaneyGartrellHofman_TVX2014.pdf">PDF</a>]</li>
-									<li>Mining Large-scale TV Group Viewing Patterns for Group Recommendation [<a href="https://www.microsoft.com/en-us/research/publication/mining-large-scale-tv-group-viewing-patterns-for-group-recommendation/">MSR Tech Report</a>]</li>
+									<li>Detecting and Characterizing Events [<a href="papers/ChaneyWallachConnellyBlei2016.pdf">PDF</a>]</li>
+									<li>Talk slides (generalized from multiple talks) [<a href="slides/Chaney_events_slides.pdf">PDF</a>]</li>
+									<li>Source code [<a href="https://github.com/ajbc/capsule">via GitHub</a>]</li>
+									<li><a href="http://www.princeton.edu/~achaney/capsule/">Visualization Demo</a></li>
+									<li>Working paper at Text as Data 2015 Conference [<a href="papers/ChaneyWallachBlei2015.pdf">paper PDF</a>] [<a href="slides/ChaneyTextAsData2015.pdf">slides PDF</a>]</li>
 								</ul>
 								</section>
 
