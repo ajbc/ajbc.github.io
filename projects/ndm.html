@@ -54,7 +54,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h2>nonparametric deconvolution models</h2>
+										<h2>Nonparametric Deconvolution Models</h2>
 									</header>
 
                                     <p>Nonparametric deconvolution models (NDMs) are a family of Bayesian nonparametric models for collections of data in which each observation is the summation over the features from heterogeneous particles.  For example, this type of data is found in elections, where we observe district-level vote tallies (observations) of individual citizens’ votes (particles) across each of the candidates or ballot measures (features), where each citizen is from a specific voter cohort (factor). Like the hierarchical Dirichlet process, NDMs rely on two tiers of Dirichlet processes to explain the data with an unknown number of latent factors; each observation is modeled as a weighted average of these latent factors. Unlike existing models, however, NDMs recover how factors vary locally for each observation. This allows us to deconvolve each observation into its constituent factors and describe how these local, observation-specific factors deviate from their corresponding global factors.</p>
@@ -62,14 +62,22 @@
 									<span class="image fit"><img src="img/ndm_related_models.png" alt="" /></span>
                                     <p>Illustrations of multiple latent variable models.  <em>Mixture models</em> (far left) assign each observation to one of <em>K</em> clusters, or factors.  <em>Admixture models</em> (center left) represent groups of observations, each with its own mixture of <em>K</em> shared factors. <em>Decomposition models</em> (center right) decompose observations into constituent parts by representing observations as a product between group representations and factor features.  <em>Deconvolution models</em> (far right, this work) similarly decompose, or deconvolve,observations into constituent parts, but also capture group-specific (or local) fluctuations in factor features.</p>
 
+									<hr class="major">
+									<h3>Citation</h3>
+<pre><code>@misc{chaney2020nonparametric,
+    title={Nonparametric Deconvolution Models},
+    author={Allison J. B. Chaney and Archit Verma and Young-suk Lee and Barbara E. Engelhardt},
+    year={2020},
+    eprint={2003.07718},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+}</code></pre>
 
 								<hr class="major">
-								<h3>resources</h3>
+								<h3>Resources</h3>
 								<ul class="alt">
+									<li>Nonparametric Deconvolution Models [<a href="https://arxiv.org/abs/2003.07718">via arXiv</a>]</li>
 									<li><a href="https://sites.google.com/view/nipsbnp2018/">BNP@NeurIPS 2018 workshop</a> invited talk [<a href="slides/Chaney_ndm_bnp.pdf">PDF of slides</a>]</li>
-
-
-
 								</ul>
 
 								</section>
