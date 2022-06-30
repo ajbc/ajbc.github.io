@@ -3659,7 +3659,7 @@ input, select, textarea {
 			-webkit-flex-shrink: 1;
 			-ms-flex-shrink: 1;
 			flex-shrink: 1;
-			width: 50%;
+			width: 62%;
 		}
 
 		#banner .image {
@@ -3673,7 +3673,7 @@ input, select, textarea {
 			flex-shrink: 0;
 			display: block;
 			margin: 0 0 2em 4em;
-			width: 50%;
+			width: 38%;
 		}
 
 			#banner .image img {
@@ -3742,12 +3742,13 @@ input, select, textarea {
 
 /* Footer */
 
-	#footer .copyright {
+	.copyright {
 		color: #9fa3a6;
 		font-size: 0.9em;
+        text-align: center;
 	}
 
-		#footer .copyright a {
+		.copyright a {
 			color: inherit;
 		}
 
@@ -3857,4 +3858,14 @@ input, select, textarea {
 /* Misc */
 span.closed {
     text-decoration: line-through;
+}
+
+.offset-links {
+    margin-top: -1em;
+    text-align: center;
+}
+
+.offset-links a {
+    margin-left: 10px;
+    margin-right: 10px;
 }
