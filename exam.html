@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<!--
+	Original Website Source:
+		Editorial by Pixelarity
+		pixelarity.com | hello@pixelarity.com
+		License: pixelarity.com/license
+	Modifications by Allison Chaney
+
+	A free variant of the base template for this
+	website is available at html5up.net under
+	the CCA 3.0 license.
+-->
+<html>
+	<head>
+		<title>Allison J.B. Chaney</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="shortcut icon" href="img/nighthawk.icon.png">
+
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2>MMS Marketing 551F Market Research Final Exam</h2>
+                                    <p>Instructions</p>
+									</header>
+                                    <ul>
+                                       <li>Sign in at the front.</li>
+                                       <li>Silence your phone, put away all personal belongings at the front of the classroom.</li>
+                                       <li>Take an exam and appendix packet, but do not open until the exam timer starts.</li>
+                                       <li>Find a seat that is not immediately adjacent to any of your peers.</li>
+                                       <li>You are allowed to leave to use the restroom, but only one at a time.</li>
+                                       <li>Prof. Allison Chaney will be available in the hall to answer any questions.</li>
+                                    </ul>
+								</section>
+
+<script>
+function startTimer() {
+    const d = new Date();
+    d.setHours(d.getHours() + 3);
+
+    var datestring = d.getFullYear() + '-' + (d.getMonth()<9?'0':'')+ (d.getMonth() + 1) + '-' + (d.getDate()<10?'0':'') + d.getDate() + (d.getMinutes()<10?' 0':' ') + d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
+
+    const countdown = document.getElementById("countdown");
+    countdown.innerHTML = "<a href=\"https://logwork.com/countdown-ys2h\" class=\"countdown-timer\" data-style=\"columns\" data-timezone=\"America/New_York\" data-date=\"" + datestring + "\">Time Remaining</a>";
+
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://cdn.logwork.com/widget/countdown.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+    return false;
+}
+</script>
+<p class="offset-links"><b>Note that this classroom will be RECORDED for the duration of the exam</b></p>
+<p class="offset-links"><b>Failure to follow any of the instructions here or on the exam front page may constitue an Honor Code violation.</b></p>
+<p class="offset-links">
+<button class="button primary" id="startexam" onclick="startTimer();this.style.visibility='hidden';">Start Exam Timer</button>
+</p>
+<div id="countdown"></div>
+
+						</div>
+					</div>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
