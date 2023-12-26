@@ -1,0 +1,128 @@
+body {
+    background-color: #f0f0f0;
+    font-family: 'Noto Sans', serif;
+    font-weight: 400;
+}
+
+div.main {
+    text-align: center;
+    padding-top: 100px;
+    width: 820px;
+    margin: auto;
+}
+
+h1 {
+    color: #262626;
+}
+
+h2 {
+    color: #4f4f4f;
+    padding-bottom: 30px;
+}
+
+h2.short {
+    padding-bottom: 0px;
+    padding-top: 5px;
+}
+
+span.umph {
+    color: #000;
+    font-weight: 700;
+}
+
+button {
+    border-radius: 40px;
+    height: 60px;
+    width: 200px;
+    font-size: 15pt;
+    border: 7px solid #f0f0f0;
+    transition: all .2s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button:hover {
+    border: 0px solid #f0f0f0;
+    cursor: pointer;
+}
+
+button.clickme {
+    background-color: #fed80b;
+}
+
+button.dontclickme {
+    background-color: #888;
+    color: #fff;
+}
+
+button.dontclickme-small {
+    background-color: #888;
+    color: #fff;
+    font-size: 12pt;
+}
+
+div.postscript {
+    padding-top:50px;
+}
+
+div.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #787878;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+div.footer a {
+    color: #6aa68d;
+}
+
+div.footer a:hover {
+    color: #156946;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+span.booktitle {
+    font-style: italic;
+}
+
+p.buffer {
+    height: 24px;
+}
+
+@media(min-width: 0px) and (max-width: 960px ){
+    div.main {
+        text-align: center;
+        padding-top: 100px;
+        width: 90%;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 1.75em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+}
+
+#countdown {
+    background-color: #156946;
+    color: #FFF;
+    border-radius: 40px;
+    font-size: 40pt;
+    border: 20px solid #156946;
+    font-weight: 700;
+}

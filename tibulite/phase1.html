@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var taskId = 0;
+        var data = {
+    "tasks": [
+        "Clean up the kitchen and dining area",
+        "Clean living spaces",
+        "Sync budget",
+        "Email to 0",
+        "Plan tomorrow",
+        "Project Free Time",
+        "Practice Music",
+        "Stretch and core exercises",
+        "Get ready for bed",
+        "Scripture / stoic study",
+        "Journal",
+        "Read in bed"
+    ],
+    "durations": [
+        30,
+        10,
+        5,
+        10,
+        5,
+        null,
+        10,
+        10,
+        5,
+        5,
+        5,
+        10
+    ]
+};
+
+        var timeleft = null;
+        var countDownDone = false;
+        function MinutesFromNow(minutes) {
+            var d = new Date();
+            d.setMinutes(d.getMinutes() + minutes);
+            return(d);
+        }
+
+        function playSound () {
+        	let bells = new Audio('bells.wav');
+	        bells.play();
+        }
+
+        function next() {
+            timeleft = null;
+            taskId += 1;
+            var countdown = document.getElementById("countdown");
+            countdown.style.borderColor = "#156946";
+            countdown.style.background = "#156946";
+            showtime();
+        }
+
+        function showtime () {
+            var now = new Date();
+            if (timeleft == null) {
+                var desc = document.getElementById("taskdescr");
+                desc.innerHTML = data["tasks"][taskId];
+                var duration = data["durations"][taskId];
+                if (duration == null) {
+                    var target = new Date();
+                    target.setSeconds(0);
+                    target.setMinutes(15);
+                    target.setHours(21);
+                    timeleft = target;
+                } else {
+                    timeleft = MinutesFromNow(duration);
+                }
+
+                var nu = document.getElementById("nextup");
+                nu.innerHTML = "Next up: " + data["tasks"][taskId+1] + " (" + data["durations"][taskId+1] + " min)";
+            }
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var timeValue = "";
+            if (hours == 0){
+                timeValue = "12";
+            } else {
+                timeValue += ((hours >12) ? hours -12 : hours);
+            }
+            timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+            timeValue += (hours >= 12) ? " PM" : " AM";
+            var blurb = document.getElementById("blurb");
+            blurb.innerHTML = timeValue;
+
+            //alert("timeleft" + timeleft);
+            //alert("now" + now);
+            var CD = timeleft.getTime()-now.getTime();
+            //alert("CD" + CD);
+            var countdown = document.getElementById("countdown");
+
+            if (CD < 0) {
+                CD = new Date(now-timeleft);
+                if (!countDownDone) {
+                    playSound();
+                    countDownDone = true;
+                }
+                countdown.style.background = "#960e39";
+                countdown.style.borderColor = "#960e39";
+            }
+
+            var CDhours = Math.floor(CD / (1000 * 3600));
+            var CDminutes = Math.floor((CD - (CDhours*1000 * 3600))/ (1000 * 60));
+            var CDseconds = Math.floor((CD - (CDhours*1000 * 3600) - (CDminutes*1000 * 60))/ 1000);
+            var CDtimeValue = "" + ((CDminutes < 10) ? "0" : "") + CDminutes;
+            if (CDhours > 0) {
+                CDtimeValue = "" + CDhours + ":" + ((CDminutes < 10) ? "0" : "") + CDminutes;
+            }
+
+            CDtimeValue += ((CDseconds < 10) ? ":0" : ":") + CDseconds;
+            countdown.innerHTML = CDtimeValue;
+            timerID = setTimeout("showtime()",1000);
+        }
+    </script>
+</head>
+<body onload="showtime()">
+
+    <div class="main">
+    <h2><span id="blurb"></span></h2>
+    <h1 id="taskdescr">Empty</h1>
+    <p id="nextup"></h1>
+    <p class="buffer"></p>
+    <p><span id="countdown"></span></p>
+    <p class="buffer"></p>
+
+    <a id="rec"><button class="clickme" onclick="next()"><span>Done!</span></button></a>
+
+    </div>
+
+</body>
+</html>
