@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="style.css">
     <script>
+        import NoSleep from 'nosleep.js';
+        var noSleep = new NoSleep();
         var taskId = 0;
         var data = {
     "tasks": [
@@ -50,6 +52,14 @@
         function playSound () {
         	let bells = new Audio('bells.wav');
 	        bells.play();
+        }
+
+        function start() {
+            document.addEventListener('click', function enableNoSleep() {
+                document.removeEventListener('click', enableNoSleep, false);
+                noSleep.enable();
+            }, false);
+            showtime();
         }
 
         function next() {
@@ -124,7 +134,7 @@
         }
     </script>
 </head>
-<body onload="showtime()">
+<body onload="start()">
 
     <div class="main">
     <h2><span id="blurb"></span></h2>
