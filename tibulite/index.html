@@ -17,9 +17,10 @@
         "Clean up the kitchen and dining area",
         "Clean living spaces",
         "Organization task",
+        "Goodnight to boys",
         "Sync budget",
         "Email to 0",
-        "Sync portable TODO list with master"
+        "Sync portable TODO list with master",
         "Plan tomorrow",
         "Project Free Time",
         "Practice Music",
@@ -27,7 +28,8 @@
         "Get ready for bed",
         "Scripture / stoic study",
         "Journal",
-        "Read in bed"
+        "Read in bed",
+        "Sleep"
     ],
     "durations": [
         1,
@@ -35,6 +37,7 @@
         30,
         10,
         10,
+        25,
         5,
         10,
         5,
@@ -45,12 +48,15 @@
         5,
         5,
         5,
-        10
+        10,
+        null
     ]
 };
 
         var timeleft = null;
         var countDownDone = false;
+        var paused = false;
+        var adjduration = null;
         function MinutesFromNow(minutes) {
             var d = new Date();
             d.setMinutes(d.getMinutes() + minutes);
@@ -71,12 +77,44 @@
         }
 
         function next() {
+            if (paused) {
+                togglepause();
+            }
             timeleft = null;
             taskId += 1;
             var countdown = document.getElementById("countdown");
             countdown.style.borderColor = "#156946";
             countdown.style.background = "#156946";
             showtime();
+        }
+
+        function togglepause() {
+            paused = !paused;
+            var now = new Date();
+            var txt = document.getElementById("pausetxt");
+            if (paused) {
+                adjduration = new Date(now-timeleft);
+                txt.innerHTML = "Continue"
+            } else {
+                timeleft = new Date(now - adjduration);
+                txt.innerHTML = "Pause"
+            }
+        }
+
+        function durToText(DUR, inclSEC) {
+            var DURhours = Math.floor(DUR / (1000 * 3600));
+            var DURminutes = Math.floor((DUR - (DURhours*1000 * 3600))/ (1000 * 60));
+            var DURseconds = Math.floor((DUR - (DURhours*1000 * 3600) - (DURminutes*1000 * 60))/ 1000);
+            var DURtimeValue = "" + ((DURminutes < 10) ? "0" : "") + DURminutes;
+            if (DURhours > 0) {
+                DURhours = DURhours % 24;
+                DURtimeValue = "" + DURhours + ":" + ((DURminutes < 10) ? "0" : "") + DURminutes;
+            }
+
+            if (inclSEC) {
+                DURtimeValue += ((DURseconds < 10) ? ":0" : ":") + DURseconds;
+            }
+            return (DURtimeValue);
         }
 
         function showtime () {
@@ -112,32 +150,78 @@
             var blurb = document.getElementById("blurb");
             blurb.innerHTML = timeValue;
 
-            //alert("timeleft" + timeleft);
-            //alert("now" + now);
-            var CD = timeleft.getTime()-now.getTime();
-            //alert("CD" + CD);
-            var countdown = document.getElementById("countdown");
+            if (!paused) {
+                var CD = timeleft.getTime()-now.getTime();
+                var countdown = document.getElementById("countdown");
 
-            if (CD < 0) {
-                CD = new Date(now-timeleft);
-                if (!countDownDone) {
-                    playSound();
-                    countDownDone = true;
+                if (CD < 0) {
+                    CD = new Date(now-timeleft);
+                    if (!countDownDone) {
+                        playSound();
+                        countDownDone = true;
+                    }
+                    countdown.style.background = "#960e39";
+                    countdown.style.borderColor = "#960e39";
                 }
-                countdown.style.background = "#960e39";
-                countdown.style.borderColor = "#960e39";
+
+                countdown.innerHTML = durToText(CD, true);
             }
 
-            var CDhours = Math.floor(CD / (1000 * 3600));
-            var CDminutes = Math.floor((CD - (CDhours*1000 * 3600))/ (1000 * 60));
-            var CDseconds = Math.floor((CD - (CDhours*1000 * 3600) - (CDminutes*1000 * 60))/ 1000);
-            var CDtimeValue = "" + ((CDminutes < 10) ? "0" : "") + CDminutes;
-            if (CDhours > 0) {
-                CDtimeValue = "" + CDhours + ":" + ((CDminutes < 10) ? "0" : "") + CDminutes;
+            /* TODO: calc proj time, bedtime, and sleep dur
+            proj time: cal how much remining before proj start. diff between that and proj end.
+            bedtime: later of time remaining or planed bedtime
+            Sleep dur: difference between bedtime and wakeup time (6am)
+            */
+
+            if (taskId > 9) {
+                document.getElementById("projtime").innerHTML = "NA"
+            } else {
+                if (paused) {
+                    timeleft = new Date(now - adjduration);
+                }
+                var dur = new Date(timeleft.getTime()-now.getTime());
+                var minleft = 0;
+                for (let i = taskId+1; i <= 9; i++) {
+                    minleft += data["durations"][i];
+                }
+                dur.setMinutes(dur.getMinutes() + minleft);
+
+                var projend = new Date();
+                projend.setSeconds(0);
+                projend.setMinutes(15);
+                projend.setHours(21);
+                if (dur > projend) {
+                    document.getElementById("projtime").innerHTML = "None"
+                } else {
+                    document.getElementById("projtime").innerHTML = durToText(new Date(projend - dur), false);
+                }
+
+                /*TODO
+                calc remainign time; if that is after 9:15,it's also zero,
+                but in that case adjust bedtime below as well*/
+
             }
 
-            CDtimeValue += ((CDseconds < 10) ? ":0" : ":") + CDseconds;
-            countdown.innerHTML = CDtimeValue;
+            /*#var duration = data["durations"][taskId];
+            projtime =*/
+            /*TODO*/
+            var bedtime = new Date();
+            bedtime.setSeconds(0);
+            bedtime.setMinutes(0);
+            bedtime.setHours(22);
+            document.getElementById("bedtime").innerHTML = durToText(bedtime, false);
+
+            var wakeup = new Date();
+            wakeup.setDate(wakeup.getDate() + 1);
+            wakeup.setSeconds(0);
+            wakeup.setMinutes(45);
+            wakeup.setHours(5);
+            /* true wakeup at 6, but 15 min buffer*/
+
+            var sleeptime = new Date(wakeup - bedtime);
+            document.getElementById("sleepdur").innerHTML = durToText(sleeptime, false);
+
+
             timerID = setTimeout("showtime()",1000);
         }
     </script>
@@ -153,6 +237,12 @@
     <p class="buffer"></p>
 
     <a id="rec"><button class="clickme" onclick="next()"><span>Done!</span></button></a>
+    <br />
+    <a id="rec"><button class="pause" onclick="togglepause()"><span id="pausetxt">Pause</span></button></a>
+
+    <p>Estimated Project time: <span id="projtime"></span></p>
+    <p>Estimated Bedtime: <span id="bedtime"></span></p>
+    <p>Estimated Sleep duration: <span id="sleepdur"></span></p>
 
     </div>
 
