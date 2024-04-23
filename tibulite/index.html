@@ -193,7 +193,7 @@
                 if (dur > projend) {
                     document.getElementById("projtime").innerHTML = "None"
                 } else {
-                    document.getElementById("projtime").innerHTML = durToText(new Date(projend - dur), true);
+                    document.getElementById("projtime").innerHTML = durToText(new Date(projend - dur), false) + ":00" ;
                 }
 
                 /*TODO
