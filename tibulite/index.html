@@ -173,13 +173,13 @@
             Sleep dur: difference between bedtime and wakeup time (6am)
             */
 
-            if (taskId > 9) {
+            if (taskId > 10) {
                 document.getElementById("projtime").innerHTML = "NA"
             } else {
                 if (paused) {
                     timeleft = new Date(now - adjduration);
                 }
-                var dur = new Date(timeleft.getTime()-now.getTime());
+                var dur = new Date(now.getTime());
                 var minleft = 0;
                 for (let i = taskId+1; i <= 9; i++) {
                     minleft += data["durations"][i];
@@ -193,7 +193,7 @@
                 if (dur > projend) {
                     document.getElementById("projtime").innerHTML = "None"
                 } else {
-                    document.getElementById("projtime").innerHTML = durToText(new Date(projend - dur), false);
+                    document.getElementById("projtime").innerHTML = durToText(new Date(projend - dur), true);
                 }
 
                 /*TODO
