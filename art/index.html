@@ -15,8 +15,8 @@
 		<title>Allison J.B. Chaney</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="shortcut icon" href="img/nighthawk.icon.png">
+		<link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="shortcut icon" href="../img/nighthawk.icon.png">
 
         <!-- track with google analytics-->
         <script>
@@ -27,7 +27,23 @@
           ga('create', 'UA-39995365-1', 'auto');
           ga('send', 'pageview');
         </script>
-	</head>
+
+        <script>
+            function openModal(imageUrl) {
+            var modal = document.getElementById('myModal');
+            var modalImg = document.getElementById('img01');
+
+            modal.style.display = "block";
+            modalImg.src = imageUrl;
+
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function() {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+    </head>
 
 	<body class="is-preload">
 
@@ -40,9 +56,9 @@
 
 							<!-- Header -->
 							<header id="header">
-							    <a href="index.html" class="logo"><strong>a</strong>llison <strong>j</strong>une <strong>b</strong>arlow <strong>c</strong>haney </a>
+							    <a href="../index.html" class="logo"><strong>a</strong>llison <strong>j</strong>une <strong>b</strong>arlow <strong>c</strong>haney </a>
 							    <ul class="icons">
-							        <li><a href="ajbc_cv.pdf" class="ai ai-cv"><span class="label">CV</span></a></li>
+							        <li><a href="../ajbc_cv.pdf" class="ai ai-cv"><span class="label">CV</span></a></li>
 							        <li><a href="http://scholar.google.com/citations?user=EWlUGVcAAAAJ" class="ai ai-google-scholar"><span class="label">GoogleScholar</span></a></li>
 							        <li><a href="https://github.com/ajbc" class="icon fa-github"><span class="label">GitHub</span></a></li>
 							        <li><a href="https://twitter.com/_ajbc" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -53,15 +69,26 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>writings</h1>
-										<p>also available on <a href="https://ajbc.substack.com/">substack</a></p>
+										<h1>art portfolio</h1>
+                                        <p>just for fun</p>
 									</header>
 
-                                    <div class="row gtr-200">
-											<ul>
-												<li>2022/06/30 - <a href="resignation.html">My Resignation</a> - Why I resigned from my tenure-track position and what's next for me</li>
-												<li>2023/06/30 - <a href="one_year_later.html">One Year Later</a> - What I’ve been doing in the year since my resignation</li>
-											</ul>
+									<div class="row gtr-200">
+                                    <div class="gallery">
+    <a href="pepper.jpg" onclick="openModal('pepper.jpg'); return false;">
+        <img src="pepper_thumbnail.jpg" alt="Peppers">
+    </a>
+    <a href="apple.jpg" onclick="openModal('apple.jpg'); return false;">
+        <img src="apple_thumbnail.jpg" alt="Apple">
+    </a>
+    <a href="pomegranates.jpg" onclick="openModal('pomegranates.jpg'); return false;">
+        <img src="pomegranates_thumbnail.jpg" alt="Pomegranates">
+    </a>
+</div>
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+</div>
 
 									</div>
 								</section>
