@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Federal Budget Allocation</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; font-size: 16px; }
+        .main-container { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 10px; }
+        .chart-container { width: 35%; text-align: center; }
+        .sliders-container { width: 60%; text-align: left; padding-right: 40px; } /* Added space on the right */
+        .chart { width: 350px; height: 350px; }
+        .slider-container { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 8px; }
+        .slider-label { display: flex; align-items: center; text-align: left; font-size: 14px; }
+        .color-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; }
+        .slider { width: 100%; }
+        .amount { font-size: 14px; text-align: right; width: 100%; color: #555; }
+        #revenue { font-size: 1.4em; margin-top: 10px; }
+        #deficit { font-size: 1.2em; margin-top: 5px; font-weight: bold; }
+        #compareBtn { margin-top: 5px; padding: 10px 15px; font-size: 1em; cursor: pointer; }
+        #barChart { margin-top: 20px; }
+        #source { font-size: 0.9em; color: lightgrey; margin-top: 15px; display: none; }
+        .bar-text { font-size: 16px; font-weight: bold; }
+		.sliders-container {
+			position: sticky;
+			top: 10px;
+			background: white;
+            padding: 10px;
+			padding-right: 80px;
+			z-index: 100;
+		}
+	</style>
+</head>
+<body>
+
+    <h2>Allocate the Federal Budget</h2>
+    <p id="revenue">2024 Federal Revenue: $4.92 Trillion</p>
+    <p id="deficit"></p>
+
+    <div class="main-container">
+        <div class="chart-container">
+            <h3>Your Allocation</h3>
+            <svg id="userPie" class="chart"></svg>
+        </div>
+        <div class="sliders-container" id="sliders"></div>
+    </div>
+
+    <button id="compareBtn">Compare to 2024 Federal Budget</button>
+    <div id="barChart"></div>
+
+    <p id="source">Source: <a href="https://usafacts.org/government-spending/" target="_blank">USAFacts</a></p>
+
+    <script>
+        const budgetData = [
+            { category: "Safety", actual: 105, user: 0, color: "#1f77b4" },
+            { category: "Defense", actual: 1300, user: 0, color: "#ff7f0e" },
+            { category: "Economy & Std of Living", actual: 695, user: 0, color: "#2ca02c" },
+            { category: "Social Security", actual: 1500, user: 0, color: "#d62728" },
+            { category: "Medicare", actual: 874, user: 0, color: "#9467bd" },
+            { category: "Medicaid & CHIP", actual: 638, user: 0, color: "#8c564b" },
+            { category: "Transfer to States", actual: 462, user: 0, color: "#e377c2" },
+            { category: "Other", actual: 371, user: 0, color: "#7f7f7f" },
+            { category: "Interest on Debt", actual: 878, user: 0, color: "#bcbd22" }
+        ];
+
+        const totalRevenue = 4920;
+
+        function formatNumber(value) {
+            return Math.abs(value) >= 1000
+                ? `$${(value / 1000).toFixed(2)} Trillion`
+                : `$${value} Billion`;
+        }
+
+        function updateDeficitIndicator() {
+            const totalSpending = budgetData.reduce((sum, d) => sum + d.user, 0);
+            const deficit = totalRevenue - totalSpending;
+            const deficitElement = document.getElementById("deficit");
+
+            deficitElement.textContent = `Budget Balance: ${formatNumber(deficit)}`;
+            deficitElement.style.color = deficit >= 0 ? "green" : "red";
+        }
+
+        function createSliders() {
+            const sliderContainer = document.getElementById("sliders");
+            sliderContainer.innerHTML = "";
+            budgetData.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "slider-container";
+                div.innerHTML = `
+                    <div class="slider-label">
+                        <div class="color-dot" style="background:${item.color}"></div>
+                        ${item.category}
+                    </div>
+                    <input type="range" min="0" max="2000" value="${item.user}" step="10"
+                        id="slider-${index}" class="slider">
+                    <div class="amount" id="val-${index}">${formatNumber(item.user)}</div>`;
+                sliderContainer.appendChild(div);
+
+                document.getElementById(`slider-${index}`).addEventListener("input", function() {
+                    budgetData[index].user = +this.value;
+                    document.getElementById(`val-${index}`).textContent = formatNumber(this.value);
+                    updateDeficitIndicator();
+                    drawUserPieChart();
+                });
+            });
+
+            updateDeficitIndicator();
+        }
+
+        function drawUserPieChart() {
+            const svg = d3.select("#userPie").html("").append("svg")
+                .attr("width", 350)
+                .attr("height", 350)
+                .append("g")
+                .attr("transform", "translate(175,175)");
+
+            const pie = d3.pie().value(d => d.user);
+            const arc = d3.arc().innerRadius(0).outerRadius(175);
+            const totalSpending = budgetData.reduce((sum, d) => sum + d.user, 0);
+            const arcs = pie(budgetData);
+
+            svg.selectAll("path")
+                .data(arcs)
+                .enter().append("path")
+                .attr("fill", d => d.data.color)
+                .attr("d", arc);
+
+            svg.selectAll("text")
+                .data(arcs)
+                .enter().append("text")
+                .attr("transform", d => `translate(${arc.centroid(d)})`)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "14px")
+                .text(d => d.data.user > 0 ? `${Math.round((d.data.user / totalSpending) * 100)}%` : "");
+        }
+
+        createSliders();
+        drawUserPieChart();
+
+        // start bar chart
+document.getElementById("compareBtn").addEventListener("click", function() {
+    document.getElementById("source").style.display = "block";
+    d3.select("#barChart").html("");  // Clear previous chart
+
+    const width = 800, height = 600;
+    const margin = { left: 250, right: 150, top: 30, bottom: 30 };
+
+    const barHeight = 20; // Properly paired bars without gaps
+
+    const svg = d3.select("#barChart")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", budgetData.length * (barHeight * 2 + 10) + margin.top + margin.bottom);
+
+    const x = d3.scaleLinear()
+        .domain([0, 1600]) // Max budget range
+        .range([0, width - margin.left - margin.right]);
+
+    const y = d3.scaleBand()
+        .domain(budgetData.map(d => d.category))
+        .range([0, budgetData.length * (barHeight * 2 + 10)]) // Proper spacing
+        .padding(0.2);
+
+    const chart = svg.append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Larger, bold category labels
+    chart.append("g")
+        .call(d3.axisLeft(y).tickSize(0).tickPadding(10))
+        .selectAll("text")
+        .style("font-size", "18px")
+        .style("font-weight", "bold");
+
+    // Actual budget bars
+    chart.selectAll(".bar-actual")
+        .data(budgetData)
+        .enter().append("rect")
+        .attr("x", 0)
+        .attr("y", d => y(d.category))
+        .attr("width", d => x(d.actual))
+        .attr("height", barHeight)
+        .attr("fill", d => d.color);
+
+    // User-proposed budget bars (directly below actual)
+    chart.selectAll(".bar-user")
+        .data(budgetData)
+        .enter().append("rect")
+        .attr("x", 0)
+        .attr("y", d => y(d.category) + barHeight) // No extra spacing
+        .attr("width", d => x(d.user))
+        .attr("height", barHeight)
+        .attr("fill", d => d3.color(d.color).brighter(1).formatHex());
+
+    // Labels for actual budget (centered inside the actual bar)
+    chart.selectAll(".label-actual")
+        .data(budgetData)
+        .enter().append("text")
+        .attr("x", d => x(d.actual) + 5)
+        .attr("y", d => y(d.category) + barHeight / 2)
+        .attr("dy", "0.35em")
+        .attr("fill", "black")
+        .attr("font-size", "14px")
+        .text(d => `Actual: ${formatNumber(d.actual)}`);
+
+    // Labels for user-proposed budget (centered inside the user bar)
+    chart.selectAll(".label-user")
+        .data(budgetData)
+        .enter().append("text")
+        .attr("x", d => x(d.user) + 5)
+        .attr("y", d => y(d.category) + barHeight + barHeight / 2)
+        .attr("dy", "0.35em")
+        .attr("fill", "black")
+        .attr("font-size", "14px")
+        .text(d => `Proposed: ${formatNumber(d.user)}`);
+});
+
+        // end bar chart
+
+    </script>
+
+</body>
+</html>
+
