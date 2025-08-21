@@ -1,85 +1,139 @@
-<!DOCTYPE HTML>
-<!--
-	Original Website Source:
-		Editorial by Pixelarity
-		pixelarity.com | hello@pixelarity.com
-		License: pixelarity.com/license
-	Modifications by Allison Chaney
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exam Instructions + 3‑Hour Timer Link</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #121319;
+      --text: #e6e8ee;
+      --muted: #c4c7d1;
+      --accent: #4f8cff;
+      --accent-contrast: #0b0c10;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(180deg, var(--bg), #0f1117 35%, #0b0c10 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+    }
+    .wrap {
+      width: min(1100px, 92vw);
+      padding: 28px 28px 36px;
+      border-radius: 22px;
+      background: radial-gradient(1200px 600px at 0% -20%, rgba(79,140,255,0.12), transparent 40%), var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.35);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: clamp(32px, 4.5vw, 48px);
+      line-height: 1.1;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    ol {
+      margin: 22px 0 0 0;
+      padding: 0 0 0 26px;
+      font-size: clamp(20px, 2.6vw, 24px);
+      line-height: 1.5;
+    }
+    li { margin: 12px 0; }
 
-	A free variant of the base template for this
-	website is available at html5up.net under
-	the CCA 3.0 license.
--->
-<html>
-	<head>
-		<title>Allison J.B. Chaney</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="shortcut icon" href="img/nighthawk.icon.png">
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: clamp(16px, 2.4vw, 22px);
+      margin-top: 18px;
+    }
 
-	</head>
+    .cta {
+      display: inline-flex;
+      gap: 12px;
+      align-items: center;
+      font-size: clamp(22px, 3vw, 26px);
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--accent-contrast);
+      background: var(--accent);
+      padding: 16px 22px;
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0 8px 20px rgba(79,140,255,0.35), inset 0 0 0 1px rgba(255,255,255,0.25);
+      transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+    .cta:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .cta:active { transform: translateY(1px); box-shadow: 0 4px 12px rgba(79,140,255,0.3); }
 
-	<body class="is-preload">
+    .tip {
+      color: var(--muted);
+      font-size: clamp(14px, 1.8vw, 16px);
+      margin-top: 10px;
+    }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    footer {
+      margin-top: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: clamp(14px, 1.8vw, 16px);
+      flex-wrap: wrap;
+    }
+    .kbd {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-bottom-width: 2px;
+      border-radius: 8px;
+      padding: 0.15em 0.45em;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main" aria-label="Exam instructions">
+    <header>
+      <div>
+        <h1>Exam Instructions</h1>
+      </div>
+    </header>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+    <ol>
+      <li><strong>Electronics:</strong> Silence phones/smartwatches and place them at the front of the room.</li>
+      <li><strong>Answer sheet:</strong> Find the answer sheet with your name.  If you cannot find it, you are in the wrong room.</li>
+      <li><strong>Find your seat:</strong> Leave at least one seat between you and fellow students.</li>
+      <li><strong>Do not open the exam</strong> until instructed.</li>
+      <li><strong>Honor code:</strong> The room is being recorded. Academic integrity rules apply.</li>
+      <li><strong>Materials:</strong> Turn in all exam pages and any notes/scratch paper when finished.</li>
+      <li><strong>Bathroom breaks:</strong> Only ONE student is allowed to leave the room at a time.</li>
+      <li><strong>Time limit:</strong> You have <u>three hours</u>.</li>
+    </ol>
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h2>MMS Marketing 551F Market Research Final Exam</h2>
-                                    <p>Instructions</p>
-									</header>
-                                    <ul>
-                                       <li>Sign in at the front.</li>
-                                       <li>Silence your phone, put away electronics and all personal belongings at the front of the classroom.</li>
-                                       <li>Take an exam and appendix packet, but do not open until the exam timer starts.</li>
-                                       <li>Find a seat that is not immediately adjacent to any of your peers.</li>
-                                       <li>You are allowed to leave to use the restroom, but only one at a time.</li>
-                                       <li>Prof. Allison Chaney will be available in the hall to answer any questions.</li>
-                                    </ul>
-								</section>
+    <div class="card">
+      <a class="cta" href="https://www.google.com/search?q=3+hour+timer" target="_blank" rel="noopener noreferrer" aria-label="Open 3 hour timer in a new tab">▶ 3‑Hour Timer</a>
+    </div>
 
-<script>
-function startTimer() {
-    const d = new Date();
-    d.setHours(d.getHours() + 3);
-
-    var datestring = d.getFullYear() + '-' + (d.getMonth()<9?'0':'')+ (d.getMonth() + 1) + '-' + (d.getDate()<10?'0':'') + d.getDate() + (d.getMinutes()<10?' 0':' ') + d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
-
-    const countdown = document.getElementById("countdown");
-    countdown.innerHTML = "<a href=\"https://logwork.com/countdown-ys2h\" class=\"countdown-timer\" data-style=\"columns\" data-timezone=\"America/New_York\" data-date=\"" + datestring + "\">Time Remaining</a>";
-
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://cdn.logwork.com/widget/countdown.js";
-    document.getElementsByTagName("head")[0].appendChild(script);
-    return false;
-}
-</script>
-<p class="offset-links"><b>Note that this classroom will be RECORDED for the duration of the exam</b></p>
-<p class="offset-links"><b>Failure to follow any of the instructions here or on the exam front page may constitue an Honor Code violation.</b></p>
-<p class="offset-links">
-<button class="button primary" id="startexam" onclick="startTimer();this.style.visibility='hidden';">Start Exam Timer</button>
-</p>
-<div id="countdown"></div>
-
-						</div>
-					</div>
-			</div>
-
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+  </main>
+</body>
 </html>
+
