@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sound Experiment</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f4;
+      --panel: #ffffff;
+      --text: #202020;
+      --muted: #666;
+      --border: #d8d8d2;
+      --accent: #315f85;
+      --button-text: #fff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171817;
+        --panel: #222322;
+        --text: #f3f3ef;
+        --muted: #b5b5ae;
+        --border: #44453f;
+        --accent: #78a9cf;
+        --button-text: #111;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(620px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.7rem;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: var(--muted);
+    }
+
+    .control {
+      margin: 26px 0;
+    }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-weight: 650;
+    }
+
+    .readout {
+      font-variant-numeric: tabular-nums;
+      font-size: 1.1rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .frequency-entry {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    input[type="number"] {
+      width: 120px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font: inherit;
+      background: transparent;
+      color: inherit;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 15px 18px;
+      margin-top: 8px;
+      font: inherit;
+      font-weight: 750;
+      font-size: 1.05rem;
+      cursor: pointer;
+      background: var(--accent);
+      color: var(--button-text);
+    }
+
+    button.playing {
+      background: #a63b32;
+      color: white;
+    }
+
+    .status {
+      min-height: 1.5em;
+      margin-top: 14px;
+      text-align: center;
+      font-weight: 650;
+    }
+
+    .note {
+      margin: 24px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.45;
+    }
+
+    .warning {
+      font-weight: 650;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Sound Experiment</h1>
+    <p class="subtitle">Generate a steady sine-wave tone and change its frequency or volume.</p>
+
+    <section class="control">
+      <div class="label-row">
+        <label for="frequencySlider">Frequency</label>
+        <span class="readout"><span id="frequencyReadout">440</span> Hz</span>
+      </div>
+      <input id="frequencySlider" type="range" min="20" max="5000" value="440" step="1">
+
+      <div class="frequency-entry">
+        <label for="frequencyNumber">Exact value:</label>
+        <input id="frequencyNumber" type="number" min="20" max="20000" value="440" step="1">
+        <span>Hz</span>
+      </div>
+    </section>
+
+    <section class="control">
+      <div class="label-row">
+        <label for="volumeSlider">Volume</label>
+        <span class="readout"><span id="volumeReadout">10</span>%</span>
+      </div>
+      <input id="volumeSlider" type="range" min="0" max="100" value="10" step="1">
+    </section>
+
+    <button id="toneButton" type="button">Start tone</button>
+    <div id="status" class="status" aria-live="polite">Tone off</div>
+
+    <p class="note">
+      <span class="warning">Start with the speaker volume low.</span>
+      Keep the computer/speaker volume fixed during the experiment. This page controls the
+      digital signal level, not calibrated sound pressure in decibels.
+    </p>
+  </main>
+
+  <script>
+    let audioContext = null;
+    let oscillator = null;
+    let gainNode = null;
+    let playing = false;
+
+    const frequencySlider = document.getElementById("frequencySlider");
+    const frequencyNumber = document.getElementById("frequencyNumber");
+    const frequencyReadout = document.getElementById("frequencyReadout");
+    const volumeSlider = document.getElementById("volumeSlider");
+    const volumeReadout = document.getElementById("volumeReadout");
+    const toneButton = document.getElementById("toneButton");
+    const status = document.getElementById("status");
+
+    function frequencyValue() {
+      return Number(frequencyNumber.value);
+    }
+
+    function volumeGain() {
+      // Linear digital amplitude: 50% on the page = gain of 0.5.
+      return Number(volumeSlider.value) / 100;
+    }
+
+    function setFrequency(value) {
+      const hz = Math.max(20, Math.min(20000, Math.round(Number(value) || 440)));
+      frequencyNumber.value = hz;
+      frequencyReadout.textContent = hz;
+
+      if (hz <= Number(frequencySlider.max)) {
+        frequencySlider.value = hz;
+      }
+
+      if (oscillator && audioContext) {
+        oscillator.frequency.setTargetAtTime(hz, audioContext.currentTime, 0.01);
+      }
+    }
+
+    function setVolume(value) {
+      const percent = Math.max(0, Math.min(100, Math.round(Number(value) || 0)));
+      volumeSlider.value = percent;
+      volumeReadout.textContent = percent;
+
+      if (gainNode && audioContext) {
+        gainNode.gain.setTargetAtTime(volumeGain(), audioContext.currentTime, 0.015);
+      }
+    }
+
+    async function startTone() {
+      audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+      await audioContext.resume();
+
+      oscillator = audioContext.createOscillator();
+      gainNode = audioContext.createGain();
+
+      oscillator.type = "sine";
+      oscillator.frequency.value = frequencyValue();
+      gainNode.gain.value = 0;
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      oscillator.start();
+
+      gainNode.gain.setTargetAtTime(volumeGain(), audioContext.currentTime, 0.02);
+
+      playing = true;
+      toneButton.textContent = "Stop tone";
+      toneButton.classList.add("playing");
+      status.textContent = `Playing ${frequencyValue()} Hz at ${volumeSlider.value}%`;
+    }
+
+    function stopTone() {
+      if (!oscillator || !gainNode || !audioContext) return;
+
+      const osc = oscillator;
+      const gain = gainNode;
+      gain.gain.setTargetAtTime(0, audioContext.currentTime, 0.015);
+
+      setTimeout(() => {
+        try { osc.stop(); } catch (_) {}
+        osc.disconnect();
+        gain.disconnect();
+      }, 80);
+
+      oscillator = null;
+      gainNode = null;
+      playing = false;
+      toneButton.textContent = "Start tone";
+      toneButton.classList.remove("playing");
+      status.textContent = "Tone off";
+    }
+
+    frequencySlider.addEventListener("input", () => {
+      setFrequency(frequencySlider.value);
+      if (playing) status.textContent = `Playing ${frequencyValue()} Hz at ${volumeSlider.value}%`;
+    });
+
+    frequencyNumber.addEventListener("input", () => {
+      setFrequency(frequencyNumber.value);
+      if (playing) status.textContent = `Playing ${frequencyValue()} Hz at ${volumeSlider.value}%`;
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      setVolume(volumeSlider.value);
+      if (playing) status.textContent = `Playing ${frequencyValue()} Hz at ${volumeSlider.value}%`;
+    });
+
+    toneButton.addEventListener("click", async () => {
+      if (playing) {
+        stopTone();
+      } else {
+        await startTone();
+      }
+    });
+
+    window.addEventListener("pagehide", stopTone);
+  </script>
+</body>
+</html>
